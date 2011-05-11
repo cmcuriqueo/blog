@@ -16,7 +16,10 @@ class AddArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->text('description');
             $table->text('content');
+            $table->boolean('estado')->default(1);//0 eliminado 
+            $table->boolean('public')->default(0);//0 no publicado
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
 

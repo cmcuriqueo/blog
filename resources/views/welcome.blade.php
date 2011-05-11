@@ -1,10 +1,11 @@
-@extends('admin.template.main')
+@extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Welcome' )
 
-@section('content') 
-
-    <h1>Hola esto es bootstrap</h1>
-    <a href="" class="btn btn-success">boton</a> 
-    
+@section('content')
+    <div class="container">
+        <div class="content">
+            <div class="title">Welcome.</div>
+        </div>
+    </div>
 @endsection

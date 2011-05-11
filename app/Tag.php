@@ -14,4 +14,22 @@ class Tag extends Model
     {
     	return $this->belongsToMany('App\Article');
     }
+
+    public function scopeActivos($query){
+        return $query->where( 'estado', true );
+    }
+
+    public function addUser($userId)
+    {
+        $this->user_id = $userId;
+        
+        return $this->save();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    
 }

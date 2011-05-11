@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->enum('type', ['member','admin'])->default('member');
+            $table->boolean('estado')->default(1);//1 activo - 0 inactivo
+            $table->enum('type', ['member','admin', 'super_admin'])->default('member');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,6 +32,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::dropIfExists('users');
     }
 }

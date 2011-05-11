@@ -27,8 +27,29 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function perfil()
+    {
+        return $this->belongsTo('App\Perfil');
+    }
+
     public function articles()
     {
         return $this->hasMany('App\Article');
     }
+
+    public function historial()
+    {
+        return $this->hasMany('App\HistorialUsuario');
+    }
+
+    public function puntuaciones()
+    {
+        return $this->belongsToMany('App\Puntuacion');
+    }
+
+    public function commits()
+    {
+        return $this->belongsToMany('App\Commit');
+    }
+
 }
