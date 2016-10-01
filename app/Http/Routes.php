@@ -1,0 +1,4 @@
+Route::get('/', function() {
+	return 	
+});
+
