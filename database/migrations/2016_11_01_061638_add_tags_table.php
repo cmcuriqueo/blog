@@ -32,8 +32,6 @@ class AddTagsTable extends Migration
 
             $table->foreign('article_id')->references('id')->on('articles');
             $table->foreign('tag_id')->references('id')->on('tags');
-            
-            $table->timestamps();
         });
     }
 

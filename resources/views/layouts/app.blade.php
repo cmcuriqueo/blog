@@ -37,7 +37,11 @@
                     </button>
 
                     <!-- Branding Image -->
+                    @if(Auth::user())
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                    @else
                     <a class="navbar-brand" href="{{ url('/') }}">
+                    @endif
                         Blog
                     </a>
                 </div>

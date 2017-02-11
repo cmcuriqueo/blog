@@ -29,7 +29,7 @@ class CommitController extends Controller
             
 
             $commits = Commit::where('article_id', $article->id)->orderBy('created_at', 'asc')->get();
-
+            
             return response()->view('article.form.addCommit', [
                         'article' => $article,  
                         'commits' => $commits

@@ -12,7 +12,7 @@
 						<h3 class="panel-title">
 							<div class="text-center">Todos mis Articulos
 								<div class="pull-right">
-									<a href="/articles/create" title="Crear Articulo">Crear Articulo</a>
+									<a href="{{ route('articles.create') }}" title="Crear Articulo">Crear Articulo</a>
 								</div>
 							</div>
 						</h3>
@@ -21,7 +21,7 @@
 					<div class="panel-body">
 						<div class="list-group">
 							@forelse ($articles as $article)
-							<a href="/articles/{{ str_replace(' ', '-', $article->title) }}/" class="list-group-item">
+							<a href="{{ url('/articles/'.str_replace(' ', '-', $article->title) ) }}" class="list-group-item">
 								<h4 class="list-group-item-heading">
 									{{ $article->title }}
 								</h4>

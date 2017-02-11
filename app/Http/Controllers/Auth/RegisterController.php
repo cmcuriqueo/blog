@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'nombre' => $user->name,
             'informacion' => 'Informacion.',
             'descripcion' => 'Descripcion.',
-            'imagen' => 'image/perfil/avatar.png',
+            'imagen' => 'image/avatar.png',
         ]);
         return $user;
     }

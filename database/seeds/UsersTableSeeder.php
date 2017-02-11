@@ -25,7 +25,7 @@ class UsersTableSeeder extends Seeder
             'nombre' => $user->name,
             'informacion' => 'Informacion.',
             'descripcion' => 'Descripcion.',
-            'imagen' => 'image/perfil/avatar.png',
+            'imagen' => 'image/avatar.png',
         ]);
         $user = User::create([
             'name' => 'super_admin',
@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
             'nombre' => $user->name,
             'informacion' => 'Informacion.',
             'descripcion' => 'Descripcion.',
-            'imagen' => 'image/perfil/avatar.png',
+            'imagen' => 'image/avatar.png',
         ]);
     }
 }

@@ -8,7 +8,7 @@ class Commit extends Model
 {
     protected $table = "commits";
 
-    protected $fillable = [ 'article_id', 'commit', 'user_id', 'category_id'];
+    protected $fillable = [ 'article_id', 'commit', 'user_id'];
 
     public function user()
     {

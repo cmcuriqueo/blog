@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 use Illuminate\Http\Request;
 use Illuminate\Http\File;
 use App\Puntuacion;
@@ -122,37 +123,19 @@ class PerfilController extends Controller
             $this->validate($request, [
                 'imagen' => 'required',
             ]);
-
             $file = $request->file('imagen');
-            /*
-            $array = array(
-                "x" => $request->x,
-                "y" => $request->y,
-                "width" =>  $request->w,
-                "height" => $request->h
-                );
+            //$file = Image::make($request->file('imagen'));
+         
+            //$file->crop( (integer)$request->w, (integer)$request->h, (integer)$request->x, (integer)$request->y );
 
-            switch ($file->getClientOriginalExtension()) {
-                case 'png':
-                    $imagen = imagecrop(imagecreatefrompng($file), $array);
-                    break;
-                default:
-                    $imagen = imagecrop(imagecreatefromjpeg($file), $array);
-                    break;
-            }
-            */
+            $path = 'image/'.$user->id.'/perfil/';
 
-            $nombre = $user->name.'_'.time().'.'.$file->getClientOriginalExtension();
-
-            //$path = public_path().'/image/perfil/'.$user->id.'/';
-            $path = 'image/perfil/'.$user->id;
-            //$imagen = imagejpeg($imagen);
             $path = Storage::disk('public')->put($path , $file);
 
             $perfil->imagen = $path;
             $perfil->save();
             \Session::flash('title', 'Foto de perfil');
-            \Session::flash('success', 'Se ha cambiado correctamente.');
+            \Session::flash('success','Se ha cambiado correctamente.');
 
             return redirect('/user/'.$user->name);
         } else {

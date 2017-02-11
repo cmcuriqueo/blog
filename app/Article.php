@@ -3,12 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Article extends Model
 {
     protected $table = "articles";
 
-    protected $fillable = ['title', 'content', 'category_id', 'user_id', 'public', 'description'];
+    protected $fillable = ['id','title', 'content', 'category_id', 'user_id', 'public', 'description'];
 
     public function category()
     {
@@ -20,14 +21,14 @@ class Article extends Model
     	return $this->belongsTo('App\User');
     }
 
-    public function images()
-    {
-    	return $this->belongsToMany('App\Image');
-    }
-
     public function tags()
     {
     	return $this->belongsToMany('App\Tag');
+    }
+
+    public function commits()
+    {
+        return $this->hasMany('App\Commit');
     }
 
     public function puntuaciones()
@@ -60,5 +61,4 @@ class Article extends Model
         
         return $this->save();
     }
-
 }

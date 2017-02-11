@@ -37,7 +37,7 @@ class UsersController extends Controller
 
     public function editTipo(Request $request, User $user){
 
-    	$user->type = $request->form[1]['value'];
+    	$user->type = $request->type;
     	$user->save();
 
     	return response()->json(['status' => 'Se ha cambiado correctamente']);
