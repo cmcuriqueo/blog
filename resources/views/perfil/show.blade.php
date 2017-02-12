@@ -25,8 +25,8 @@
 				<div class="panel-body">	
 					<div class="col-md-2">
 						<div class="row">
-							<a href="{{ asset('storage/'.$perfil->imagen) }}" class="thumbnail">
-								<img class="img-responsive" alt="Responsive image" src="{{ asset('storage/'.$perfil->imagen) }}" alt="{{ $perfil->imagen }}">
+							<a href="{{ asset($perfil->imagen) }}" class="thumbnail">
+								<img class="img-responsive" alt="Responsive image" src="{{ asset($perfil->imagen) }}" alt="{{ $perfil->imagen }}">
 							</a>
 							@if($user->id === Auth::user()->id)
 

@@ -123,15 +123,18 @@ class PerfilController extends Controller
             $this->validate($request, [
                 'imagen' => 'required',
             ]);
+            
             $file = $request->file('imagen');
-            //$file = Image::make($request->file('imagen'));
-         
-            //$file->crop( (integer)$request->w, (integer)$request->h, (integer)$request->x, (integer)$request->y );
+            $filename  = time() . '.' . $file->getClientOriginalExtension();
+            
+            $image = Image::make($file);
+            $image->crop( (integer)$request->w, (integer)$request->h, (integer)$request->x, (integer)$request->y );
 
-            $path = 'image/'.$user->id.'/perfil/';
-
-            $path = Storage::disk('public')->put($path , $file);
-
+            $path = 'image/'.$user->id.'/perfil/'.$filename;
+            $image->save($path);
+            
+            //$path = Storage::disk('public')->put($path , $image);
+            
             $perfil->imagen = $path;
             $perfil->save();
             \Session::flash('title', 'Foto de perfil');
