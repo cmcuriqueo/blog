@@ -130,7 +130,7 @@ class PerfilController extends Controller
             $image = Image::make($file);
             $image->crop( (integer)$request->w, (integer)$request->h, (integer)$request->x, (integer)$request->y );
 
-            $path = 'image/'.$user->id.'/perfil/'.$filename;
+            $path = 'image/perfil/'.$filename;
             $image->save($path);
             
             //$path = Storage::disk('public')->put($path , $image);

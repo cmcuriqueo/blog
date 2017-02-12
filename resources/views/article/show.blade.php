@@ -60,15 +60,21 @@
 
 
 								@if( Auth::user()->id == $article->user_id)
+									<div class="btn-group" role="group" aria-label="...">
+										<a href="/articles/{{ $article->id }}/edit" title="Editar" class="btn btn-default" >
+											<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+										</a>
+										<a href="/articles/{{ $article->id }}" class="btn btn-default" title="Eliminar"
+										onclick="event.preventDefault();
+                                                     document.getElementById('delete').submit();">
+											<span class='glyphicon glyphicon-trash'></span>
+										</a>
 
-									<a href="/articles/{{ $article->id }}/edit" title="editar" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar</a>
-									<form action="/articles/{{ $article->id }}" method="POST">
-										<input name="_token" type="hidden" value="{{ csrf_token() }}" />
-										{{ method_field('DELETE') }}
-										<button class="btn btn-info " type="submit">
-											<span class='glyphicon glyphicon-trash'></span> Eliminar
-										</button>
-									</form>
+										<form id="delete" action="/articles/{{ $article->id }}" method="POST">
+											<input name="_token" type="hidden" value="{{ csrf_token() }}" />
+											{{ method_field('DELETE') }}
+										</form>
+									</div>
 								@endif
 							</div>
 						</div>
